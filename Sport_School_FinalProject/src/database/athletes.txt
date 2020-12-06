@@ -1,0 +1,4 @@
+Babken,Babikyan,180.0,80.0,8,8,sprinters
+Michael,Jackson,175.0,70.0,7,8,8,weightlifter
+Hovhannes,Hovhannisyan,180.0,120.0,8,9,weightlifter
+Ruben,Rubinyan,170.0,80.0,8,9,weightlifter
