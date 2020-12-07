@@ -1,5 +1,6 @@
 package service;
 
+import Utils.ConsoleColors;
 import model.Footballer;
 
 import java.io.IOException;
@@ -151,8 +152,8 @@ public class FootballerService {
         String stt = st + ",footballer\n";
         st = st + "\n";
 
-        Files.write(Paths.get("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart-master\\Sport_School_FinalProject\\src\\database\\footballers.txt"), st.getBytes(), StandardOpenOption.APPEND);
-        Files.write(Paths.get("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart-master\\Sport_School_FinalProject\\src\\database\\sportsmen.txt"), stt.getBytes(), StandardOpenOption.APPEND);
+        Files.write(Paths.get("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart\\Sport_School_FinalProject\\src\\database\\footballers.txt"), st.getBytes(), StandardOpenOption.APPEND);
+        Files.write(Paths.get("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart\\Sport_School_FinalProject\\src\\database\\sportsmen.txt"), stt.getBytes(), StandardOpenOption.APPEND);
 
 
     }
@@ -202,7 +203,7 @@ public class FootballerService {
 
         String[] array = {ftbYet.getFirstName(), ftbYet.getLastName(), ftbYet.getHeight() + "", ftbYet.getWeight() + ""};
 
-        String[] infos = FileService.read("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart-master\\Sport_School_FinalProject\\src\\database\\footballers.txt");
+        String[] infos = FileService.read("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart\\Sport_School_FinalProject\\src\\database\\footballers.txt");
         String[] correctLine = null;
         for (String line : infos) {
             int k = 0;
@@ -221,12 +222,12 @@ public class FootballerService {
             }
         }
         if (correctLine == null) {
-            System.out.println("No such person in our Football School. Would you like us to search in the " +
+            System.out.println(ConsoleColors.RED + "No such person in our Football School. Would you like us to search in the " +
                     "whole Sports School?");
             while (true) {
-                System.out.println("1. Yes");
+                System.out.println(ConsoleColors.RESET + "1. Yes");
                 System.out.println("2. No");
-                System.out.print("Input: ");
+                System.out.print(ConsoleColors.GREEN + "Input: ");
                 String hh = sc.nextLine();
                 int input = 0;
                 try {
@@ -235,7 +236,7 @@ public class FootballerService {
                     System.out.println(e.toString());
                 }
                 if (input == 1) {
-                    SportsmenService.printFootballerByName(array);
+                    SportsmenService.printSportsmanByName(array);
                     return;
                 }
                 if (input == 2) {
@@ -243,6 +244,6 @@ public class FootballerService {
                 }
             }
         }
-        System.out.println(Arrays.toString(correctLine));
+        System.out.println(ConsoleColors.PURPLE_BOLD + (Arrays.toString(correctLine)).substring(1, Arrays.toString(correctLine).length() - 1));
     }
 }

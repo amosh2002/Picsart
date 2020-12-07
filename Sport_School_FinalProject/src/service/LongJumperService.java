@@ -1,8 +1,7 @@
 package service;
 
-import model.Footballer;
+import Utils.ConsoleColors;
 import model.LongJumper;
-import model.WeightLifter;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -90,9 +89,9 @@ public class LongJumperService {
         String stt = st + ",weightlifter\n";
         st = st + "\n";
 
-        Files.write(Paths.get("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart-master\\Sport_School_FinalProject\\src\\database\\longJumpers.txt"), st.getBytes(), StandardOpenOption.APPEND);
-        Files.write(Paths.get("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart-master\\Sport_School_FinalProject\\src\\database\\sportsmen.txt"), stt.getBytes(), StandardOpenOption.APPEND);
-        Files.write(Paths.get("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart-master\\Sport_School_FinalProject\\src\\database\\athletes.txt"), stt.getBytes(), StandardOpenOption.APPEND);
+        Files.write(Paths.get("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart\\Sport_School_FinalProject\\src\\database\\longJumpers.txt"), st.getBytes(), StandardOpenOption.APPEND);
+        Files.write(Paths.get("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart\\Sport_School_FinalProject\\src\\database\\sportsmen.txt"), stt.getBytes(), StandardOpenOption.APPEND);
+        Files.write(Paths.get("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart\\Sport_School_FinalProject\\src\\database\\athletes.txt"), stt.getBytes(), StandardOpenOption.APPEND);
 
     }
 
@@ -173,7 +172,7 @@ public class LongJumperService {
                     System.out.println(e.toString());
                 }
                 if (input == 1) {
-                    SportsmenService.printFootballerByName(array);
+                    SportsmenService.printSportsmanByName(array);
                     return;
                 }
                 if (input == 2) {
@@ -181,6 +180,6 @@ public class LongJumperService {
                 }
             }
         }
-        System.out.println(Arrays.toString(correctLine));
+        System.out.println(ConsoleColors.PURPLE_BOLD + (Arrays.toString(correctLine)).substring(1, Arrays.toString(correctLine).length() - 1));
     }
 }

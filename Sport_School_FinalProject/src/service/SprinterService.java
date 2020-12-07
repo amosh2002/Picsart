@@ -1,6 +1,6 @@
 package service;
 
-import model.Footballer;
+import Utils.ConsoleColors;
 import model.Sprinter;
 
 import java.io.IOException;
@@ -78,9 +78,9 @@ public class SprinterService {
         String stt = st + ",sprinters\n";
         st = st + "\n";
 
-        Files.write(Paths.get("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart-master\\Sport_School_FinalProject\\src\\database\\sprinters.txt"), st.getBytes(), StandardOpenOption.APPEND);
-        Files.write(Paths.get("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart-master\\Sport_School_FinalProject\\src\\database\\sportsmen.txt"), stt.getBytes(), StandardOpenOption.APPEND);
-        Files.write(Paths.get("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart-master\\Sport_School_FinalProject\\src\\database\\athletes.txt"), stt.getBytes(), StandardOpenOption.APPEND);
+        Files.write(Paths.get("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart\\Sport_School_FinalProject\\src\\database\\sprinters.txt"), st.getBytes(), StandardOpenOption.APPEND);
+        Files.write(Paths.get("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart\\Sport_School_FinalProject\\src\\database\\sportsmen.txt"), stt.getBytes(), StandardOpenOption.APPEND);
+        Files.write(Paths.get("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart\\Sport_School_FinalProject\\src\\database\\athletes.txt"), stt.getBytes(), StandardOpenOption.APPEND);
 
     }
 
@@ -128,7 +128,7 @@ public class SprinterService {
 
         String[] array = {ftbYet.getFirstName(), ftbYet.getLastName(), ftbYet.getHeight() + "", ftbYet.getWeight() + ""};
 
-        String[] infos = FileService.read("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart-master\\Sport_School_FinalProject\\src\\database\\sprinters.txt");
+        String[] infos = FileService.read("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart\\Sport_School_FinalProject\\src\\database\\sprinters.txt");
         String[] correctLine = null;
         for (String line : infos) {
             int k = 0;
@@ -161,7 +161,7 @@ public class SprinterService {
                     System.out.println(e.toString());
                 }
                 if (input == 1) {
-                    SportsmenService.printFootballerByName(array);
+                    SportsmenService.printSportsmanByName(array);
                     return;
                 }
                 if (input == 2) {
@@ -169,6 +169,6 @@ public class SprinterService {
                 }
             }
         }
-        System.out.println(Arrays.toString(correctLine));
+        System.out.println(ConsoleColors.PURPLE_BOLD + (Arrays.toString(correctLine)).substring(1, Arrays.toString(correctLine).length() - 1));
     }
 }
