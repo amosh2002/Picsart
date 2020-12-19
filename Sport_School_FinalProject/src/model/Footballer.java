@@ -11,31 +11,11 @@ public class Footballer extends Sportsman implements SpeedRunner {
     protected int physical;
     protected int heading;
 
-    public Footballer(String firstName, String lastName, double height, double weight) {
-        super(firstName, lastName, height, weight);
-    }
 
-    public Footballer(){
+    public Footballer() {
         super();
     }
 
-    public Footballer(String firstName, String lastName, double height, double weight, char preferredFoot, String position, int pace, int shooting, int passing,
-                      int dribbling, int defending, int physical, int heading){
-        super(firstName, lastName, height, weight);
-        try {
-            setPreferredFoot(preferredFoot);
-            setPosition(position);
-            setPace(pace);
-            setShooting(shooting);
-            setPassing(passing);
-            setDefending(defending);
-            setDribbling(dribbling);
-            setPhysical(physical);
-            setHeading(heading);
-        } catch (InvalidCredentialsException e) {
-            System.out.println(e);
-        }
-    }
 
     public char getPreferredFoot() {
         return preferredFoot;

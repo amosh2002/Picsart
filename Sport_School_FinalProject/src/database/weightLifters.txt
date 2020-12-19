@@ -1,2 +1,0 @@
-Hovhannes,Hovhannisyan,180.0,120.0,8,9
-Ruben,Rubinyan,170.0,80.0,8,9

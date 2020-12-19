@@ -3,17 +3,8 @@ package model;
 public class WeightLifter extends Athlete implements RockStrong {
     protected int strength;
 
-    public WeightLifter(String firstName, String lastName, double height, double weight, int physical, int strength) {
-        super(firstName, lastName, height, weight, 1, physical);
-        try {
-            setStrength(strength);
-        } catch (InvalidCredentialsException e) {
-            System.out.println(e.toString());
-        }
 
-    }
-
-    public WeightLifter(){
+    public WeightLifter() {
         super();
     }
 

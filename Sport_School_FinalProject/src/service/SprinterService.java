@@ -1,19 +1,48 @@
 package service;
 
 import Utils.ConsoleColors;
+import main.Permissions;
 import model.Sprinter;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class SprinterService {
-    public static void create() throws IOException {
+    public static void create() throws IOException, NoSuchAlgorithmException {
         Sprinter ftbYet = new Sprinter();
         Scanner sc = new Scanner(System.in);
+        while (ftbYet.getUsername() == null) {
+            System.out.print("Username: ");
+            String fName = sc.nextLine();
+            try {
+                ftbYet.setUsername(fName);
+            } catch (Exception e) {
+                System.out.println(e.toString());
+            }
+        }
+        while (ftbYet.getEmail() == null) {
+            System.out.print("E-mail: ");
+            String fName = sc.nextLine();
+            try {
+                ftbYet.setEmail(fName);
+            } catch (Exception e) {
+                System.out.println(e.toString());
+            }
+        }
+        while (ftbYet.getPassword() == null) {
+            System.out.print("Password: ");
+            String fName = sc.nextLine();
+            try {
+                ftbYet.setPassword(fName);
+            } catch (Exception e) {
+                System.out.println(e.toString());
+            }
+        }
         while (ftbYet.getFirstName() == null) {
             System.out.print("First Name: ");
             String fName = sc.nextLine();
@@ -77,10 +106,14 @@ public class SprinterService {
                 + ftbYet.getWeight() + "," + ftbYet.getPace() + "," + ftbYet.getPhysical();
         String stt = st + ",sprinters\n";
         st = st + "\n";
+        String loginData = MD5Service.getString(ftbYet.getFirstName() + " " + ftbYet.getLastName() + ", " + ftbYet.getUsername() + ", "
+                + ftbYet.getEmail() + ", " + ftbYet.getPassword() + Permissions.SPORTSMAN + "\n");
 
         Files.write(Paths.get("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart\\Sport_School_FinalProject\\src\\database\\sprinters.txt"), st.getBytes(), StandardOpenOption.APPEND);
         Files.write(Paths.get("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart\\Sport_School_FinalProject\\src\\database\\sportsmen.txt"), stt.getBytes(), StandardOpenOption.APPEND);
         Files.write(Paths.get("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart\\Sport_School_FinalProject\\src\\database\\athletes.txt"), stt.getBytes(), StandardOpenOption.APPEND);
+        Files.write(Paths.get("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart\\Sport_School_FinalProject\\src\\database\\user_base.txt"), loginData.getBytes(), StandardOpenOption.APPEND);
+
 
     }
 

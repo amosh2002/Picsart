@@ -1,20 +1,49 @@
 package service;
 
 import Utils.ConsoleColors;
+import main.Permissions;
 import model.Footballer;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class FootballerService {
-    public static void create() throws IOException {
+    public static void create() throws IOException, NoSuchAlgorithmException {
 
         Footballer ftbYet = new Footballer();
         Scanner sc = new Scanner(System.in);
+        while (ftbYet.getUsername() == null) {
+            System.out.print("Username: ");
+            String fName = sc.nextLine();
+            try {
+                ftbYet.setUsername(fName);
+            } catch (Exception e) {
+                System.out.println(e.toString());
+            }
+        }
+        while (ftbYet.getEmail() == null) {
+            System.out.print("E-mail: ");
+            String fName = sc.nextLine();
+            try {
+                ftbYet.setEmail(fName);
+            } catch (Exception e) {
+                System.out.println(e.toString());
+            }
+        }
+        while (ftbYet.getPassword() == null) {
+            System.out.print("Password: ");
+            String fName = sc.nextLine();
+            try {
+                ftbYet.setPassword(fName);
+            } catch (Exception e) {
+                System.out.println(e.toString());
+            }
+        }
         while (ftbYet.getFirstName() == null) {
             System.out.print("First Name: ");
             String fName = sc.nextLine();
@@ -144,16 +173,20 @@ public class FootballerService {
             }
         }
 
-        String st = ftbYet.getFirstName() + "," + ftbYet.getLastName() + "," + ftbYet.getHeight() + ","
+        String loginData = ftbYet.getFirstName() + " " + ftbYet.getLastName() + "," + ftbYet.getUsername() + ","
+                + ftbYet.getEmail() + "," + ftbYet.getPassword() + "," + Permissions.SPORTSMAN + "\n";
+        String st = ftbYet.getFirstName() + " " + ftbYet.getLastName() + "," + ftbYet.getHeight() + ","
                 + ftbYet.getWeight() + "," + ftbYet.getPreferredFoot() + "," + ftbYet.getPosition() + ","
                 + ftbYet.getPace() + "," + ftbYet.getShooting() + "," + ftbYet.getPassing() + ","
                 + ftbYet.getDribbling() + "," + ftbYet.getDefending() + "," + ftbYet.getPhysical() + ","
                 + ftbYet.getHeading();
-        String stt = st + ",footballer\n";
-        st = st + "\n";
+        String stt = st + ",footballer," + MD5Service.getString(loginData) + "\n";
+        st = st + "," + MD5Service.getString(ftbYet.getUsername() + ftbYet.getPassword()) + "\n";
 
-        Files.write(Paths.get("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart\\Sport_School_FinalProject\\src\\database\\footballers.txt"), st.getBytes(), StandardOpenOption.APPEND);
-        Files.write(Paths.get("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart\\Sport_School_FinalProject\\src\\database\\sportsmen.txt"), stt.getBytes(), StandardOpenOption.APPEND);
+
+        Files.write(Paths.get("Sport_School_FinalProject/src/database/footballers.txt"), st.getBytes(), StandardOpenOption.APPEND);
+        Files.write(Paths.get("Sport_School_FinalProject/src/database/sportsmen.txt"), stt.getBytes(), StandardOpenOption.APPEND);
+        Files.write(Paths.get("Sport_School_FinalProject/src/database/user_base.txt"), loginData.getBytes(), StandardOpenOption.APPEND);
 
 
     }

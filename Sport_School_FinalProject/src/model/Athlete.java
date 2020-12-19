@@ -4,16 +4,6 @@ public abstract class Athlete extends Sportsman {
     protected int pace;
     protected int physical;
 
-    public Athlete(String firstName, String lastName, double height, double weight, int pace, int physical) {
-        super(firstName, lastName, height, weight);
-        try {
-            setPace(pace);
-            setPhysical(physical);
-        } catch (InvalidCredentialsException e) {
-            System.out.println(e.toString());
-        }
-    }
-
     public Athlete() {
 
     }

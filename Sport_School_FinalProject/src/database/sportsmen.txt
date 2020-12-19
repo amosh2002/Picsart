@@ -1,5 +1,2 @@
-Armen,Armenakyan,189.0,87.0,l,CDM,3,4,6,3,7,8,7,footballer
-Babken,Babikyan,180.0,80.0,8,8,sprinters
-Michael,Jackson,175.0,70.0,7,8,8,weightlifter
-Hovhannes,Hovhannisyan,180.0,120.0,8,9,weightlifter
-Ruben,Rubinyan,170.0,80.0,8,9,weightlifter
+Armen Armenakyan,189.0,89.0,l,CDM,1,1,1,2,3,4,5,footballer,11225d37367c206c7df9ee28fa0476b3
+Arrr ss,189.0,98.0,l,CDM,1,1,1,1,1,1,1,footballer,ddfe8e5d8391be4317baf78328ddd62d

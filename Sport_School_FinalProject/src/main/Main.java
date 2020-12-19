@@ -5,16 +5,18 @@ import model.InvalidCredentialsException;
 import service.*;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws InvalidCredentialsException, IOException {
+    public static void main(String[] args) throws InvalidCredentialsException, IOException, NoSuchAlgorithmException {
         while (true) {
             System.out.println();
             Scanner scanner = new Scanner(System.in);
             System.out.println(ConsoleColors.BLUE + "Hello! Welcome to our Sports School, choose an option to continue...");
             System.out.println(ConsoleColors.RESET + "1. Register a new Member");
-            System.out.println("2. See the Information of a Member");
+            System.out.println("2. Login");
+            System.out.println("3. See the Information of a Member");
             System.out.println(ConsoleColors.RED_BRIGHT + "0. Quit");
 
             System.out.print(ConsoleColors.GREEN + "Input: ");
@@ -28,6 +30,10 @@ public class Main {
                     System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT + "Registration Successful!");
                     break;
                 case 2:
+                    login();
+                    System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT + "Login Successful!");
+                    break;
+                case 3:
                     findToPrint();
                     break;
                 case 0:
@@ -37,7 +43,36 @@ public class Main {
         }
     }
 
-    public static void register() throws IOException, InvalidCredentialsException {
+    private static void login() throws IOException, NoSuchAlgorithmException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print(ConsoleColors.RESET + "Username: ");
+        String username = scanner.nextLine();
+        System.out.print(ConsoleColors.RESET + "Password: ");
+        String password = scanner.nextLine();
+        System.out.println();
+
+        String[] infos = FileService.read("Sport_School_FinalProject/src/database/user_base.txt");
+        String matchedCode = "";
+        for (String line : infos) {
+            if (line.equals("")) {
+                continue;
+            }
+            String[] usrLine = line.split(",");
+            String code = MD5Service.getString(usrLine[1] + usrLine[usrLine.length - 2]);
+            if (code.equals(MD5Service.getString(username + MD5Service.getString(password)))) {
+                matchedCode = code;
+            }
+        }
+        if (!matchedCode.equals("")) {
+            System.out.println("User found");
+            return;
+        }
+        System.out.println("No such user");
+
+
+    }
+
+    public static void register() throws IOException, InvalidCredentialsException, NoSuchAlgorithmException {
         Scanner scanner = new Scanner(System.in);
         System.out.println(ConsoleColors.BLUE + "Choose the School and your profile...");
         System.out.println(ConsoleColors.RESET + "1. Register as a new Footballer to our Football School");
