@@ -16,7 +16,6 @@ public class Main {
             System.out.println(ConsoleColors.BLUE + "Hello! Welcome to our Sports School, choose an option to continue...");
             System.out.println(ConsoleColors.RESET + "1. Register a new Member");
             System.out.println("2. Login");
-            System.out.println("3. See the Information of a Member");
             System.out.println(ConsoleColors.RED_BRIGHT + "0. Quit");
 
             System.out.print(ConsoleColors.GREEN + "Input: ");
@@ -31,7 +30,6 @@ public class Main {
                     break;
                 case 2:
                     login();
-                    System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT + "Login Successful!");
                     break;
                 case 3:
                     findToPrint();
@@ -53,7 +51,7 @@ public class Main {
 
         String[] infos = FileService.read("Sport_School_FinalProject/src/database/user_base.txt");
         String matchedCode = "";
-        String matchedRole = "";
+        Permissions matchedRole = null;
         for (String line : infos) {
             if (line.equals("")) {
                 continue;
@@ -62,16 +60,17 @@ public class Main {
             String code = MD5Service.getString(usrLine[1] + usrLine[usrLine.length - 2]);
             if (code.equals(MD5Service.getString(username + MD5Service.getString(password)))) {
                 matchedCode = code;
-                matchedRole = usrLine[usrLine.length - 1];
+                matchedRole = Permissions.valueOf(usrLine[usrLine.length - 1]);
             }
         }
         if (!matchedCode.equals("")) {
-            System.out.println("User found");
+            System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT + "Login Successful!");
+            if (matchedRole == Permissions.ADMIN) {
+                adminFeatures();
+            }
             return;
         }
-        System.out.println("No such user");
-
-
+        System.out.println(ConsoleColors.RED_BRIGHT + "No such user found");
     }
 
     public static void register() throws IOException, InvalidCredentialsException, NoSuchAlgorithmException {
@@ -104,6 +103,29 @@ public class Main {
             case 0:
                 System.exit(0);
         }
+    }
+
+    public static void adminFeatures() throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("1. See information of a Member");
+        System.out.println("2. See all Members");
+        System.out.println("3. Go Back");
+        System.out.println(ConsoleColors.RED_BRIGHT + "0. Quit");
+        int input = scanner.nextInt();
+        switch (input) {
+            case 1:
+                findToPrint();
+                break;
+            case 2:
+                SportsmenService.printAllMembers();
+                break;
+            case 3:
+                return;
+            case 0:
+                System.exit(2);
+        }
+        adminFeatures();
+
     }
 
     public static void findToPrint() throws IOException {
