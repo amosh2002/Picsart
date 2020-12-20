@@ -53,6 +53,7 @@ public class Main {
 
         String[] infos = FileService.read("Sport_School_FinalProject/src/database/user_base.txt");
         String matchedCode = "";
+        String matchedRole = "";
         for (String line : infos) {
             if (line.equals("")) {
                 continue;
@@ -61,6 +62,7 @@ public class Main {
             String code = MD5Service.getString(usrLine[1] + usrLine[usrLine.length - 2]);
             if (code.equals(MD5Service.getString(username + MD5Service.getString(password)))) {
                 matchedCode = code;
+                matchedRole = usrLine[usrLine.length - 1];
             }
         }
         if (!matchedCode.equals("")) {

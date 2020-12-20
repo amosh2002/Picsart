@@ -1,2 +1,0 @@
-Armen Armenakyan,189.0,89.0,l,CDM,1,1,1,2,3,4,5,11225d37367c206c7df9ee28fa0476b3
-Arrr ss,189.0,98.0,l,CDM,1,1,1,1,1,1,1,06d07e47e9a96f5fa0156f22b9f45d2c
