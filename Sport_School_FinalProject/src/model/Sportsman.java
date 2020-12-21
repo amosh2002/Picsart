@@ -70,7 +70,7 @@ public abstract class Sportsman {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(password);
         if (!matcher.matches()) {
-            throw new InvalidCredentialsException("password should contain more than 8 characters, contain 2 uppercase letters and 3 numbers, Your input: '" + email + "'");
+            throw new InvalidCredentialsException("password should contain more than 8 characters, contain 2 uppercase letters and 3 numbers, Your input: '" + password + "'");
         }
         this.password = MD5Service.getString(password);
     }

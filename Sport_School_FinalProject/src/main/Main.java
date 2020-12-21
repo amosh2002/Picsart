@@ -2,6 +2,7 @@ package main;
 
 import Utils.ConsoleColors;
 import model.InvalidCredentialsException;
+import model.Sportsman;
 import service.*;
 
 import java.io.IOException;
@@ -30,9 +31,6 @@ public class Main {
                     break;
                 case 2:
                     login();
-                    break;
-                case 3:
-                    findToPrint();
                     break;
                 case 0:
                     System.exit(1);
@@ -65,13 +63,19 @@ public class Main {
         }
         if (!matchedCode.equals("")) {
             System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT + "Login Successful!");
+
+            System.out.println("Welcome ");
             if (matchedRole == Permissions.ADMIN) {
                 adminFeatures();
+            }
+            if (matchedRole == Permissions.SPORTSMAN) {
+                sportsmenFeatures(matchedCode);
             }
             return;
         }
         System.out.println(ConsoleColors.RED_BRIGHT + "No such user found");
     }
+
 
     public static void register() throws IOException, InvalidCredentialsException, NoSuchAlgorithmException {
         Scanner scanner = new Scanner(System.in);
@@ -126,6 +130,42 @@ public class Main {
         }
         adminFeatures();
 
+    }
+
+    private static void sportsmenFeatures(String code) {
+        Sportsman sp;
+
+        try {
+            sp = SportsmenService.getMemberByID(code);
+        } catch (Exception e) {
+            System.out.println("Could not find such member, please try again");
+            return;
+        }
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("1. See your information");
+        //TODO
+        System.out.println("2. See your team Members");
+        //END TODO
+        System.out.println("3. Go Back");
+        System.out.println(ConsoleColors.RED_BRIGHT + "0. Quit");
+        int input = scanner.nextInt();
+        switch (input) {
+            case 1:
+                if (sp != null) {
+                    SportsmenService.printInfo(sp);
+                }
+                break;
+            case 2:
+                //TODO
+                //SportsmenService.printAllMembers();
+                //END TODO
+                break;
+            case 3:
+                return;
+            case 0:
+                System.exit(2);
+        }
+        sportsmenFeatures(code);
     }
 
     public static void findToPrint() throws IOException {

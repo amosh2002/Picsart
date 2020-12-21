@@ -180,7 +180,7 @@ public class FootballerService {
                 + ftbYet.getPace() + "," + ftbYet.getShooting() + "," + ftbYet.getPassing() + ","
                 + ftbYet.getDribbling() + "," + ftbYet.getDefending() + "," + ftbYet.getPhysical() + ","
                 + ftbYet.getHeading();
-        String stt = st + ",footballer," + MD5Service.getString(loginData) + "\n";
+        String stt = st + ",footballer," + MD5Service.getString(ftbYet.getUsername() + ftbYet.getPassword()) + "\n";
         st = st + "," + MD5Service.getString(ftbYet.getUsername() + ftbYet.getPassword()) + "\n";
 
 
@@ -236,7 +236,7 @@ public class FootballerService {
 
         String[] array = {ftbYet.getFirstName(), ftbYet.getLastName(), ftbYet.getHeight() + "", ftbYet.getWeight() + ""};
 
-        String[] infos = FileService.read("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart\\Sport_School_FinalProject\\src\\database\\footballers.txt");
+        String[] infos = FileService.read("Sport_School_FinalProject/src/database/footballers.txt");
         String[] correctLine = null;
         for (String line : infos) {
             int k = 0;

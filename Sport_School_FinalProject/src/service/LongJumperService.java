@@ -112,19 +112,19 @@ public class LongJumperService {
             }
         }
 
-        String st = ftbYet.getFirstName() + "," + ftbYet.getLastName() + "," + ftbYet.getHeight() + ","
+        String loginData = ftbYet.getFirstName() + " " + ftbYet.getLastName() + "," + ftbYet.getUsername() + ","
+                + ftbYet.getEmail() + "," + ftbYet.getPassword() + "," + Permissions.SPORTSMAN + "\n";
+        String st = ftbYet.getFirstName() + " " + ftbYet.getLastName() + "," + ftbYet.getHeight() + ","
                 + ftbYet.getWeight() + "," + ftbYet.getPace() + "," + ftbYet.getPhysical() + ","
                 + ftbYet.getJumpingHeight();
-        String stt = st + ",weightlifter\n";
-        st = st + "\n";
+        String stt = st + ",longJumper," + MD5Service.getString(ftbYet.getUsername() + ftbYet.getPassword()) + "\n";
+        st = st + "," + MD5Service.getString(ftbYet.getUsername() + ftbYet.getPassword()) + "\n";
 
-        String loginData = MD5Service.getString(ftbYet.getFirstName() + " " + ftbYet.getLastName() + ", " + ftbYet.getUsername() + ", "
-                + ftbYet.getEmail() + ", " + ftbYet.getPassword() + Permissions.SPORTSMAN + "\n");
 
-        Files.write(Paths.get("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart\\Sport_School_FinalProject\\src\\database\\longJumpers.txt"), st.getBytes(), StandardOpenOption.APPEND);
-        Files.write(Paths.get("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart\\Sport_School_FinalProject\\src\\database\\sportsmen.txt"), stt.getBytes(), StandardOpenOption.APPEND);
-        Files.write(Paths.get("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart\\Sport_School_FinalProject\\src\\database\\athletes.txt"), stt.getBytes(), StandardOpenOption.APPEND);
-        Files.write(Paths.get("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart\\Sport_School_FinalProject\\src\\database\\user_base.txt"), loginData.getBytes(), StandardOpenOption.APPEND);
+        Files.write(Paths.get("Sport_School_FinalProject/src/database/longJumpers.txt"), st.getBytes(), StandardOpenOption.APPEND);
+        Files.write(Paths.get("Sport_School_FinalProject/src/database/sportsmen.txt"), stt.getBytes(), StandardOpenOption.APPEND);
+        Files.write(Paths.get("Sport_School_FinalProject/src/database/athletes.txt"), stt.getBytes(), StandardOpenOption.APPEND);
+        Files.write(Paths.get("Sport_School_FinalProject/src/database/user_base.txt"), loginData.getBytes(), StandardOpenOption.APPEND);
 
     }
 
@@ -172,7 +172,7 @@ public class LongJumperService {
 
         String[] array = {ftbYet.getFirstName(), ftbYet.getLastName(), ftbYet.getHeight() + "", ftbYet.getWeight() + ""};
 
-        String[] infos = FileService.read("C:\\Users\\Armen Armenakyan\\OneDrive\\Desktop\\Picsart-master\\Sport_School_FinalProject\\src\\database\\longJumpers.txt");
+        String[] infos = FileService.read("Sport_School_FinalProject/src/database/longJumpers.txt");
         String[] correctLine = null;
         for (String line : infos) {
             int k = 0;
