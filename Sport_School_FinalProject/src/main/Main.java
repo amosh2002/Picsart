@@ -132,7 +132,7 @@ public class Main {
 
     }
 
-    private static void sportsmenFeatures(String code) {
+    private static void sportsmenFeatures(String code) throws IOException {
         Sportsman sp;
 
         try {
@@ -148,6 +148,7 @@ public class Main {
         //END TODO
         System.out.println("3. Go Back");
         System.out.println(ConsoleColors.RED_BRIGHT + "0. Quit");
+        System.out.print(ConsoleColors.PURPLE_BOLD);
         int input = scanner.nextInt();
         switch (input) {
             case 1:
@@ -156,9 +157,9 @@ public class Main {
                 }
                 break;
             case 2:
-                //TODO
-                //SportsmenService.printAllMembers();
-                //END TODO
+                if (sp != null) {
+                    SportsmenService.printAllTeamMembers(sp.getClass().getSimpleName());
+                }
                 break;
             case 3:
                 return;

@@ -30,6 +30,7 @@ public abstract class Sportsman {
     }
 
     public void setUsername(String username) throws InvalidCredentialsException, IOException {
+        /*
         String[] infos = FileService.read("Sport_School_FinalProject/src/database/user_base.txt");
         for (String line : infos) {
             if (line.equals("")) {
@@ -40,6 +41,7 @@ public abstract class Sportsman {
                 throw new InvalidCredentialsException("This username is already taken");
             }
         }
+         */
 
         if (username.length() <= 10) {
             throw new InvalidCredentialsException("Username should be longer than 10 characters, Your input: '" + username + "'");

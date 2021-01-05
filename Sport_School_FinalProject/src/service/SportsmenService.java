@@ -4,6 +4,7 @@ import Utils.ConsoleColors;
 import model.*;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
 public class SportsmenService {
@@ -42,9 +43,20 @@ public class SportsmenService {
         }
     }
 
-    public static Sportsman getMemberByID(String id) throws IOException {
+    public static void printAllTeamMembers(String className) throws IOException {
+        System.out.println(ConsoleColors.BLUE + "Printing the full list of all team members...");
+        String[] infos = FileService.read("Sport_School_FinalProject/src/database/" + className.substring(0, 1).toLowerCase() + className.substring(1) + "s.txt");
+        int i = 1;
+        for (String line : infos) {
+            System.out.println(ConsoleColors.PURPLE_BOLD + i + ". " + (line.split(","))[0]);
+        }
+    }
+
+    public static Sportsman getMemberByID(String id) throws IOException, NoSuchAlgorithmException {
         String[] infos = FileService.read("Sport_School_FinalProject/src/database/sportsmen.txt");
+        String[] userInfos = FileService.read("Sport_School_FinalProject/src/database/user_base.txt");
         String[] correctSegmentated = null;
+        String[] userCorrectSegmentated = null;
         for (String line : infos) {
             String[] lineSegmentated = line.split(",");
             String idFromDoc = lineSegmentated[lineSegmentated.length - 1];
@@ -52,10 +64,19 @@ public class SportsmenService {
                 correctSegmentated = lineSegmentated;
             }
         }
+        for (String line : userInfos) {
+            String[] lineSegmentated = line.split(",");
+            String passwordHashed = lineSegmentated[lineSegmentated.length - 2];
+            String completeKey = MD5Service.getString(lineSegmentated[1] + passwordHashed);
+            if (id.equals(completeKey)) {
+                userCorrectSegmentated = lineSegmentated;
+            }
+        }
 
-        if (correctSegmentated == null) {
+        if (correctSegmentated == null || userCorrectSegmentated == null) {
             return null;
         }
+        System.out.print(ConsoleColors.RESET);
         switch (correctSegmentated[correctSegmentated.length - 2]) {
             case "footballer":
                 Footballer toBeReturned = new Footballer();
@@ -73,6 +94,9 @@ public class SportsmenService {
                     toBeReturned.setDefending(Integer.parseInt(correctSegmentated[9]));
                     toBeReturned.setPhysical(Integer.parseInt(correctSegmentated[10]));
                     toBeReturned.setHeading(Integer.parseInt(correctSegmentated[11]));
+                    toBeReturned.setUsername(userCorrectSegmentated[1]);
+                    toBeReturned.setEmail(userCorrectSegmentated[2]);
+                    //toBeReturned.setPassword(userCorrectSegmentated[3]);
                     return toBeReturned;
                 } catch (Exception e) {
                     System.out.println("Oops... An error occurred, please try again");
@@ -88,6 +112,10 @@ public class SportsmenService {
                     toBeReturned1.setPace(Integer.parseInt(correctSegmentated[3]));
                     toBeReturned1.setPhysical(Integer.parseInt(correctSegmentated[4]));
                     toBeReturned1.setJumpingHeight(Integer.parseInt(correctSegmentated[5]));
+                    toBeReturned1.setUsername(userCorrectSegmentated[1]);
+                    toBeReturned1.setEmail(userCorrectSegmentated[2]);
+                    //toBeReturned1.setPassword(userCorrectSegmentated[3]);
+
                     return toBeReturned1;
                 } catch (Exception e) {
                     System.out.println("Oops... An error occurred, please try again");
@@ -102,6 +130,9 @@ public class SportsmenService {
                     toBeReturned2.setWeight(Double.parseDouble(correctSegmentated[2]));
                     toBeReturned2.setPhysical(Integer.parseInt(correctSegmentated[3]));
                     toBeReturned2.setStrength(Integer.parseInt(correctSegmentated[4]));
+                    toBeReturned2.setUsername(userCorrectSegmentated[1]);
+                    toBeReturned2.setEmail(userCorrectSegmentated[2]);
+                    //toBeReturned2.setPassword(userCorrectSegmentated[3]);
                     return toBeReturned2;
                 } catch (Exception e) {
                     System.out.println("Oops... An error occurred, please try again");
@@ -116,6 +147,9 @@ public class SportsmenService {
                     toBeReturned3.setWeight(Double.parseDouble(correctSegmentated[2]));
                     toBeReturned3.setPace(Integer.parseInt(correctSegmentated[3]));
                     toBeReturned3.setPhysical(Integer.parseInt(correctSegmentated[4]));
+                    toBeReturned3.setUsername(userCorrectSegmentated[1]);
+                    toBeReturned3.setEmail(userCorrectSegmentated[2]);
+                    //toBeReturned3.setPassword(userCorrectSegmentated[3]);
                     return toBeReturned3;
                 } catch (Exception e) {
                     System.out.println("Oops... An error occurred, please try again");
