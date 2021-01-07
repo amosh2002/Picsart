@@ -8,6 +8,24 @@ public class WeightLifter extends Athlete implements RockStrong {
         super();
     }
 
+    public WeightLifter(int pace, int physical, int strength) {
+        super(pace, physical);
+        try {
+            setHeight(height);
+        } catch (InvalidCredentialsException e) {
+            System.out.println(e.toString());
+        }
+    }
+
+    public WeightLifter(String firstName, String lastName, double height, double weight, String username, String email, String password, int pace, int physical, int strength) {
+        super(firstName, lastName, height, weight, username, email, password, pace, physical);
+        try {
+            setHeight(height);
+        } catch (InvalidCredentialsException e) {
+            System.out.println(e.toString());
+        }
+    }
+
     public int getStrength() {
         return strength;
     }

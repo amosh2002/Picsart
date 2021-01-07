@@ -8,6 +8,22 @@ public class LongJumper extends Athlete implements SpeedRunner, HighJumper {
         super();
     }
 
+    public LongJumper(int pace, int physical, int jumpingHeight) {
+        super(pace, physical);
+        try {
+            setJumpingHeight(jumpingHeight);
+        } catch (InvalidCredentialsException e) {
+            System.out.println(e.toString());
+        }
+    }
+
+    public LongJumper(String firstName, String lastName, double height, double weight, String username, String email, String password, int pace, int physical, int jumpingHeight) {
+        super(firstName, lastName, height, weight, username, email, password, pace, physical);
+        try {
+            setJumpingHeight(jumpingHeight);
+        } catch (InvalidCredentialsException e) {
+            System.out.println(e.toString());
+        }    }
 
     public int getJumpingHeight() {
         return jumpingHeight;

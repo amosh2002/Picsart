@@ -79,25 +79,13 @@ public class SportsmenService {
         System.out.print(ConsoleColors.RESET);
         switch (correctSegmentated[correctSegmentated.length - 2]) {
             case "footballer":
-                Footballer toBeReturned = new Footballer();
                 try {
-                    toBeReturned.setFirstName(correctSegmentated[0].split(" ")[0]);
-                    toBeReturned.setLastName(correctSegmentated[0].split(" ")[1]);
-                    toBeReturned.setHeight(Double.parseDouble(correctSegmentated[1]));
-                    toBeReturned.setWeight(Double.parseDouble(correctSegmentated[2]));
-                    toBeReturned.setPreferredFoot(correctSegmentated[3].charAt(0));
-                    toBeReturned.setPosition(correctSegmentated[4]);
-                    toBeReturned.setPace(Integer.parseInt(correctSegmentated[5]));
-                    toBeReturned.setShooting(Integer.parseInt(correctSegmentated[6]));
-                    toBeReturned.setPassing(Integer.parseInt(correctSegmentated[7]));
-                    toBeReturned.setDribbling(Integer.parseInt(correctSegmentated[8]));
-                    toBeReturned.setDefending(Integer.parseInt(correctSegmentated[9]));
-                    toBeReturned.setPhysical(Integer.parseInt(correctSegmentated[10]));
-                    toBeReturned.setHeading(Integer.parseInt(correctSegmentated[11]));
-                    toBeReturned.setUsername(userCorrectSegmentated[1]);
-                    toBeReturned.setEmail(userCorrectSegmentated[2]);
-                    //toBeReturned.setPassword(userCorrectSegmentated[3]);
-                    return toBeReturned;
+                    return new Footballer(correctSegmentated[0].split(" ")[0], correctSegmentated[0].split(" ")[1],
+                            Double.parseDouble(correctSegmentated[1]), Double.parseDouble(correctSegmentated[2]),
+                            userCorrectSegmentated[1], userCorrectSegmentated[2], userCorrectSegmentated[3],
+                            correctSegmentated[3].charAt(0), correctSegmentated[4], Integer.parseInt(correctSegmentated[5]),
+                            Integer.parseInt(correctSegmentated[6]), Integer.parseInt(correctSegmentated[7]), Integer.parseInt(correctSegmentated[8]),
+                            Integer.parseInt(correctSegmentated[9]), Integer.parseInt(correctSegmentated[10]), Integer.parseInt(correctSegmentated[11]));
                 } catch (Exception e) {
                     System.out.println("Oops... An error occurred, please try again");
                 }

@@ -8,6 +8,25 @@ public abstract class Athlete extends Sportsman {
 
     }
 
+    public Athlete(int pace, int physical) {
+        try {
+            setPace(pace);
+            setPhysical(physical);
+        } catch (InvalidCredentialsException e) {
+            System.out.println(e.toString());
+        }
+    }
+
+    public Athlete(String firstName, String lastName, double height, double weight, String username, String email, String password, int pace, int physical) {
+        super(firstName, lastName, height, weight, username, email, password);
+        try {
+            setPace(pace);
+            setPhysical(physical);
+        } catch (InvalidCredentialsException e) {
+            System.out.println(e.toString());
+        }
+    }
+
     public int getPace() {
         return pace;
     }

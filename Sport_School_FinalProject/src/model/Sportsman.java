@@ -25,12 +25,34 @@ public abstract class Sportsman {
 
     }
 
+    public Sportsman(String firstName, String lastName, double height, double weight, String username, String email, String password) {
+
+        try {
+            setFirstName(firstName);
+            setLastName(lastName);
+            setHeight(height);
+            setWeight(weight);
+            setUsername(username);
+            setEmail(email);
+            setPassword(password);
+        } catch (InvalidCredentialsException | IOException | NoSuchAlgorithmException e) {
+            System.out.println(e.toString());
+        }
+
+    }
+
     public String getUsername() {
         return username;
     }
 
     public void setUsername(String username) throws InvalidCredentialsException, IOException {
-        /*
+        if (username.length() <= 10) {
+            throw new InvalidCredentialsException("Username should be longer than 10 characters, Your input: '" + username + "'");
+        }
+        this.username = username;
+    }
+
+    public void setNonCheckedUsername(String username) throws IOException, InvalidCredentialsException {
         String[] infos = FileService.read("Sport_School_FinalProject/src/database/user_base.txt");
         for (String line : infos) {
             if (line.equals("")) {
@@ -41,12 +63,7 @@ public abstract class Sportsman {
                 throw new InvalidCredentialsException("This username is already taken");
             }
         }
-         */
-
-        if (username.length() <= 10) {
-            throw new InvalidCredentialsException("Username should be longer than 10 characters, Your input: '" + username + "'");
-        }
-        this.username = username;
+        setUsername(username);
     }
 
     public String getEmail() {
@@ -74,8 +91,20 @@ public abstract class Sportsman {
         if (!matcher.matches()) {
             throw new InvalidCredentialsException("password should contain more than 8 characters, contain 2 uppercase letters and 3 numbers, Your input: '" + password + "'");
         }
+        this.password = password;
+    }
+
+    public void setPasswordNotHashed(String password) throws InvalidCredentialsException, NoSuchAlgorithmException {
+        String regex = "^(?=.{8,}$)(?=(?:.*?[A-Z]){2})(?=(?:.*?[0-9]){3}).*$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(password);
+        if (!matcher.matches()) {
+            throw new InvalidCredentialsException("password should contain more than 8 characters, contain 2 uppercase letters and 3 numbers, Your input: '" + password + "'");
+        }
         this.password = MD5Service.getString(password);
     }
+
+
 
     public String getFirstName() {
         return firstName;
