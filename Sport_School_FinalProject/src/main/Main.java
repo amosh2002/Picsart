@@ -143,11 +143,10 @@ public class Main {
         }
         Scanner scanner = new Scanner(System.in);
         System.out.println("1. See your information");
-        //TODO
         System.out.println("2. See your team Members");
-        //END TODO
         System.out.println("3. Go Back");
         System.out.println(ConsoleColors.RED_BRIGHT + "0. Quit");
+        System.out.print(ConsoleColors.GREEN + "Input: ");
         System.out.print(ConsoleColors.PURPLE_BOLD);
         int input = scanner.nextInt();
         switch (input) {

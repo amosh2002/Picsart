@@ -38,7 +38,7 @@ public class LongJumperService {
             System.out.print("Password: ");
             String fName = sc.nextLine();
             try {
-                ftbYet.setPassword(fName);
+                ftbYet.setPasswordNotHashed(fName);
             } catch (Exception e) {
                 System.out.println(e.toString());
             }

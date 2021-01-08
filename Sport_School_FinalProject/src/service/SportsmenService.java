@@ -48,7 +48,7 @@ public class SportsmenService {
         String[] infos = FileService.read("Sport_School_FinalProject/src/database/" + className.substring(0, 1).toLowerCase() + className.substring(1) + "s.txt");
         int i = 1;
         for (String line : infos) {
-            System.out.println(ConsoleColors.PURPLE_BOLD + i + ". " + (line.split(","))[0]);
+            System.out.println(ConsoleColors.PURPLE_BOLD + i++ + ". " + (line.split(","))[0]);
         }
     }
 
