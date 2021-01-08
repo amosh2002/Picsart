@@ -85,12 +85,6 @@ public abstract class Sportsman {
     }
 
     public void setPassword(String password) throws InvalidCredentialsException, NoSuchAlgorithmException {
-        String regex = "^(?=.{8,}$)(?=(?:.*?[A-Z]){2})(?=(?:.*?[0-9]){3}).*$";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(password);
-        if (!matcher.matches()) {
-            throw new InvalidCredentialsException("password should contain more than 8 characters, contain 2 uppercase letters and 3 numbers, Your input: '" + password + "'");
-        }
         this.password = password;
     }
 

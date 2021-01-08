@@ -91,54 +91,31 @@ public class SportsmenService {
                 }
                 break;
             case "longJumper":
-                LongJumper toBeReturned1 = new LongJumper();
                 try {
-                    toBeReturned1.setFirstName(correctSegmentated[0].split(" ")[0]);
-                    toBeReturned1.setLastName(correctSegmentated[0].split(" ")[1]);
-                    toBeReturned1.setHeight(Double.parseDouble(correctSegmentated[1]));
-                    toBeReturned1.setWeight(Double.parseDouble(correctSegmentated[2]));
-                    toBeReturned1.setPace(Integer.parseInt(correctSegmentated[3]));
-                    toBeReturned1.setPhysical(Integer.parseInt(correctSegmentated[4]));
-                    toBeReturned1.setJumpingHeight(Integer.parseInt(correctSegmentated[5]));
-                    toBeReturned1.setUsername(userCorrectSegmentated[1]);
-                    toBeReturned1.setEmail(userCorrectSegmentated[2]);
-                    //toBeReturned1.setPassword(userCorrectSegmentated[3]);
-
-                    return toBeReturned1;
+                    return new LongJumper(correctSegmentated[0].split(" ")[0], correctSegmentated[0].split(" ")[1],
+                            Double.parseDouble(correctSegmentated[1]), Double.parseDouble(correctSegmentated[2]), userCorrectSegmentated[1],
+                            userCorrectSegmentated[2], userCorrectSegmentated[3], Integer.parseInt(correctSegmentated[3]), Integer.parseInt(correctSegmentated[4]),
+                            Integer.parseInt(correctSegmentated[5]));
                 } catch (Exception e) {
                     System.out.println("Oops... An error occurred, please try again");
                 }
                 break;
             case "weightLifter":
-                WeightLifter toBeReturned2 = new WeightLifter();
                 try {
-                    toBeReturned2.setFirstName(correctSegmentated[0].split(" ")[0]);
-                    toBeReturned2.setLastName(correctSegmentated[0].split(" ")[1]);
-                    toBeReturned2.setHeight(Double.parseDouble(correctSegmentated[1]));
-                    toBeReturned2.setWeight(Double.parseDouble(correctSegmentated[2]));
-                    toBeReturned2.setPhysical(Integer.parseInt(correctSegmentated[3]));
-                    toBeReturned2.setStrength(Integer.parseInt(correctSegmentated[4]));
-                    toBeReturned2.setUsername(userCorrectSegmentated[1]);
-                    toBeReturned2.setEmail(userCorrectSegmentated[2]);
-                    //toBeReturned2.setPassword(userCorrectSegmentated[3]);
-                    return toBeReturned2;
+                    return new WeightLifter(correctSegmentated[0].split(" ")[0],correctSegmentated[0].split(" ")[1],
+                            Double.parseDouble(correctSegmentated[1]),Double.parseDouble(correctSegmentated[1]),
+                            userCorrectSegmentated[1],userCorrectSegmentated[2],userCorrectSegmentated[3],
+                            0,Integer.parseInt(correctSegmentated[3]),Integer.parseInt(correctSegmentated[4]));
                 } catch (Exception e) {
                     System.out.println("Oops... An error occurred, please try again");
                 }
                 break;
             case "sprinter":
-                Sprinter toBeReturned3 = new Sprinter();
                 try {
-                    toBeReturned3.setFirstName(correctSegmentated[0].split(" ")[0]);
-                    toBeReturned3.setLastName(correctSegmentated[0].split(" ")[1]);
-                    toBeReturned3.setHeight(Double.parseDouble(correctSegmentated[1]));
-                    toBeReturned3.setWeight(Double.parseDouble(correctSegmentated[2]));
-                    toBeReturned3.setPace(Integer.parseInt(correctSegmentated[3]));
-                    toBeReturned3.setPhysical(Integer.parseInt(correctSegmentated[4]));
-                    toBeReturned3.setUsername(userCorrectSegmentated[1]);
-                    toBeReturned3.setEmail(userCorrectSegmentated[2]);
-                    //toBeReturned3.setPassword(userCorrectSegmentated[3]);
-                    return toBeReturned3;
+                    return new Sprinter(correctSegmentated[0].split(" ")[0],correctSegmentated[0].split(" ")[1],
+                            Double.parseDouble(correctSegmentated[1]),Double.parseDouble(correctSegmentated[2]),
+                            userCorrectSegmentated[1],userCorrectSegmentated[2],userCorrectSegmentated[3],Integer.parseInt(correctSegmentated[3]),
+                            Integer.parseInt(correctSegmentated[4]));
                 } catch (Exception e) {
                     System.out.println("Oops... An error occurred, please try again");
                 }
