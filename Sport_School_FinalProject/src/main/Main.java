@@ -22,9 +22,6 @@ public class Main {
             System.out.print(ConsoleColors.GREEN + "Input: ");
             int input = scanner.nextInt();
             switch (input) {
-                case -15:
-                    SportsmenService.printAllMembers();
-                    break;
                 case 1:
                     register();
                     System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT + "Registration Successful!");

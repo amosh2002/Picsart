@@ -1,4 +1,4 @@
-Armen Armenakyan,armen_25022002,amosh.armenakyan@gmail.com,ed18b70f2098734978ca25a24eafb45b,ADMIN
+Armen Armenakyan,armen_25022002,amosh.armenakyan@gmail.com,79ab7cb2858b28b0be36da96cb2e643a,ADMIN
 W W,wwwwwwwwwww,w@w.com,6cb407756c169fed584a1e8466150c4e,SPORTSMAN
 S S,sssssssssss,s@s.com,79ab7cb2858b28b0be36da96cb2e643a,SPORTSMAN
 Saqo Sargsyan,Ssssssssssss,S@s.com,79ab7cb2858b28b0be36da96cb2e643a,SPORTSMAN
