@@ -20,7 +20,13 @@ public class Main {
             System.out.println(ConsoleColors.RED_BRIGHT + "0. Quit");
 
             System.out.print(ConsoleColors.GREEN + "Input: ");
-            int input = scanner.nextInt();
+            int input;
+            try {
+                input = scanner.nextInt();
+            } catch (Exception e) {
+                System.out.println(ConsoleColors.RED + "Input should be an integer, enter once again, please");
+                continue;
+            }
             switch (input) {
                 case 1:
                     register();
@@ -36,7 +42,7 @@ public class Main {
         }
     }
 
-    private static void login() throws IOException, NoSuchAlgorithmException {
+    private static void login() throws IOException, NoSuchAlgorithmException, InvalidCredentialsException {
         Scanner scanner = new Scanner(System.in);
         System.out.print(ConsoleColors.RESET + "Username: ");
         String username = scanner.nextLine();
@@ -85,7 +91,13 @@ public class Main {
 
         System.out.println(ConsoleColors.RED_BRIGHT + "0. Quit");
         System.out.print(ConsoleColors.GREEN + "Input: ");
-        int input = scanner.nextInt();
+        int input = 0;
+        try {
+            input = scanner.nextInt();
+        } catch (Exception e) {
+            System.out.println(ConsoleColors.RED + "Input should be an integer, enter once again, please");
+            register();
+        }
         switch (input) {
             case 1:
                 FootballerService.create();
@@ -100,19 +112,26 @@ public class Main {
                 WeightLifterService.create();
                 break;
             case 5:
-                return;
+                main(new String[1]);
             case 0:
                 System.exit(0);
         }
     }
 
-    public static void adminFeatures() throws IOException {
+    public static void adminFeatures() throws IOException, InvalidCredentialsException, NoSuchAlgorithmException {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("1. See information of a Member");
+        System.out.println(ConsoleColors.RESET + "1. See information of a Member");
         System.out.println("2. See all Members");
-        System.out.println("3. Go Back");
+        System.out.println(ConsoleColors.YELLOW_BRIGHT + "3. Go Back");
         System.out.println(ConsoleColors.RED_BRIGHT + "0. Quit");
-        int input = scanner.nextInt();
+        System.out.print(ConsoleColors.GREEN + "Input: ");
+        int input = 0;
+        try {
+            input = scanner.nextInt();
+        } catch (Exception e) {
+            System.out.println(ConsoleColors.RED + "Input should be an integer, enter once again, please");
+            adminFeatures();
+        }
         switch (input) {
             case 1:
                 findToPrint();
@@ -121,7 +140,7 @@ public class Main {
                 SportsmenService.printAllMembers();
                 break;
             case 3:
-                return;
+                main(new String[1]);
             case 0:
                 System.exit(2);
         }
@@ -129,7 +148,7 @@ public class Main {
 
     }
 
-    private static void sportsmenFeatures(String code) throws IOException {
+    private static void sportsmenFeatures(String code) throws IOException, NoSuchAlgorithmException, InvalidCredentialsException {
         Sportsman sp;
 
         try {
@@ -141,11 +160,17 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("1. See your information");
         System.out.println("2. See your team Members");
-        System.out.println("3. Go Back");
+        System.out.println(ConsoleColors.YELLOW_BRIGHT + "3. Go Back");
         System.out.println(ConsoleColors.RED_BRIGHT + "0. Quit");
         System.out.print(ConsoleColors.GREEN + "Input: ");
         System.out.print(ConsoleColors.PURPLE_BOLD);
-        int input = scanner.nextInt();
+        int input = 0;
+        try {
+            input = scanner.nextInt();
+        } catch (Exception e) {
+            System.out.println(ConsoleColors.RED + "Input should be an integer, enter once again, please");
+            sportsmenFeatures(code);
+        }
         switch (input) {
             case 1:
                 if (sp != null) {
@@ -158,7 +183,7 @@ public class Main {
                 }
                 break;
             case 3:
-                return;
+                main(new String[1]);
             case 0:
                 System.exit(2);
         }
@@ -167,7 +192,7 @@ public class Main {
 
     public static void findToPrint() throws IOException {
         Scanner scanner = new Scanner(System.in);
-        System.out.println(ConsoleColors.BLUE + "Which School are you from?");
+        System.out.println(ConsoleColors.BLUE + "Which School is that student from?");
         System.out.println(ConsoleColors.RESET + "1. Football School");
         System.out.println("2. Athletes - Long Jumpers' School");
         System.out.println("3. Athletes - Sprinters' School");
@@ -176,19 +201,29 @@ public class Main {
         System.out.println(ConsoleColors.YELLOW_BRIGHT + "5. Go Back");
         System.out.println(ConsoleColors.RED_BRIGHT + "0. Quit");
         System.out.print(ConsoleColors.GREEN + "Input: ");
-        int input = scanner.nextInt();
+        int input = 0;
+        try {
+            input = scanner.nextInt();
+        } catch (Exception e) {
+            System.out.println(ConsoleColors.RED + "Input should be an integer, enter once again, please");
+            findToPrint();
+        }
         switch (input) {
             case 1:
                 FootballerService.printFootballerByName();
+                System.out.print(ConsoleColors.RESET);
                 break;
             case 2:
                 LongJumperService.printLongJumperByName();
+                System.out.print(ConsoleColors.RESET);
                 break;
             case 3:
                 SprinterService.printSprinterByName();
+                System.out.print(ConsoleColors.RESET);
                 break;
             case 4:
                 WeightLifterService.printWeightLiferByName();
+                System.out.print(ConsoleColors.RESET);
                 break;
             case 5:
                 return;

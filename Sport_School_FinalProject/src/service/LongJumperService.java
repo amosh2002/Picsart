@@ -170,7 +170,7 @@ public class LongJumperService {
             }
         }
 
-        String[] array = {ftbYet.getFirstName(), ftbYet.getLastName(), ftbYet.getHeight() + "", ftbYet.getWeight() + ""};
+        String[] array = {ftbYet.getFirstName() + " " + ftbYet.getLastName(), ftbYet.getHeight() + "", ftbYet.getWeight() + ""};
 
         String[] infos = FileService.read("Sport_School_FinalProject/src/database/longJumpers.txt");
         String[] correctLine = null;
@@ -191,12 +191,12 @@ public class LongJumperService {
             }
         }
         if (correctLine == null) {
-            System.out.println("No such person in our Long Jumpers' School. Would you like us to search in the " +
+            System.out.println(ConsoleColors.RED + "No such person in our Sprinters' School. Would you like us to search in the " +
                     "whole Sports School?");
             while (true) {
-                System.out.println("1. Yes");
+                System.out.println(ConsoleColors.RESET + "1. Yes");
                 System.out.println("2. No");
-                System.out.print("Input: ");
+                System.out.print(ConsoleColors.GREEN + "Input: ");
                 String hh = sc.nextLine();
                 int input = 0;
                 try {

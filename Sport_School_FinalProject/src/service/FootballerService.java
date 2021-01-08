@@ -234,7 +234,7 @@ public class FootballerService {
             }
         }
 
-        String[] array = {ftbYet.getFirstName(), ftbYet.getLastName(), ftbYet.getHeight() + "", ftbYet.getWeight() + ""};
+        String[] array = {ftbYet.getFirstName() + " " + ftbYet.getLastName(), ftbYet.getHeight() + "", ftbYet.getWeight() + ""};
 
         String[] infos = FileService.read("Sport_School_FinalProject/src/database/footballers.txt");
         String[] correctLine = null;
