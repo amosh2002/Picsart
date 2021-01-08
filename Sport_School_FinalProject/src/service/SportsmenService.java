@@ -124,8 +124,5 @@ public class SportsmenService {
         return null;
     }
 
-    public static void printInfo(Sportsman sp) {
-        System.out.println(sp.getFirstName() + " " + sp.getLastName() + ", " + sp.getEmail() + ", " + sp.getUsername());
-    }
 }
 

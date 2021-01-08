@@ -10,7 +10,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class Sportsman {
+public abstract class Sportsman implements Printable {
     protected String firstName;
     protected String lastName;
     protected double height;
@@ -20,6 +20,14 @@ public abstract class Sportsman {
     private String email;
     private String password;
 
+    @Override
+    public void print() {
+        System.out.println("Full name: " + firstName + " " + lastName);
+        System.out.println("Height: " + height);
+        System.out.println("Weight: " + weight);
+        System.out.println("Username: " + username);
+        System.out.println("Email: " + email);
+    }
 
     public Sportsman() {
 
@@ -97,7 +105,6 @@ public abstract class Sportsman {
         }
         this.password = MD5Service.getString(password);
     }
-
 
 
     public String getFirstName() {

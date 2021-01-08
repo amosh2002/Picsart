@@ -1,8 +1,15 @@
 package model;
 
-public class WeightLifter extends Athlete implements RockStrong {
+public class WeightLifter extends Athlete {
     protected int strength;
 
+
+    @Override
+    public void print() {
+        super.print();
+        System.out.println("Physical: " + physical);
+        System.out.println("Strength: " + strength);
+    }
 
     public WeightLifter() {
         super();
@@ -11,7 +18,7 @@ public class WeightLifter extends Athlete implements RockStrong {
     public WeightLifter(int pace, int physical, int strength) {
         super(pace, physical);
         try {
-            setHeight(height);
+            setStrength(strength);
         } catch (InvalidCredentialsException e) {
             System.out.println(e.toString());
         }
@@ -20,7 +27,7 @@ public class WeightLifter extends Athlete implements RockStrong {
     public WeightLifter(String firstName, String lastName, double height, double weight, String username, String email, String password, int pace, int physical, int strength) {
         super(firstName, lastName, height, weight, username, email, password, pace, physical);
         try {
-            setHeight(height);
+            setStrength(strength);
         } catch (InvalidCredentialsException e) {
             System.out.println(e.toString());
         }
@@ -37,18 +44,4 @@ public class WeightLifter extends Athlete implements RockStrong {
         this.strength = strength;
     }
 
-    @Override
-    public void boostStrength(int strengthBoost) throws InvalidCredentialsException {
-        if (strengthBoost < 1 || strengthBoost > 5) {
-            throw new InvalidCredentialsException("Strength should be above 1 and below 5, Your input: '" + strengthBoost + "'");
-        }
-        strength += strengthBoost;
-        physical += strengthBoost * 1.8;
-        if (strength > 15) {
-            strength = 15;
-        }
-        if (physical > 13) {
-            physical = 13;
-        }
-    }
 }

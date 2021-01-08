@@ -2,3 +2,5 @@ Armen Armenakyan,armen_25022002,amosh.armenakyan@gmail.com,79ab7cb2858b28b0be36d
 W W,wwwwwwwwwww,w@w.com,6cb407756c169fed584a1e8466150c4e,SPORTSMAN
 S S,sssssssssss,s@s.com,79ab7cb2858b28b0be36da96cb2e643a,SPORTSMAN
 Saqo Sargsyan,Ssssssssssss,S@s.com,79ab7cb2858b28b0be36da96cb2e643a,SPORTSMAN
+Leo Messi,leomessibarcelona,leo@messi.com,79ab7cb2858b28b0be36da96cb2e643a,SPORTSMAN
+Cristiano Ronaldo,cristianoronaldojuventus,cristiano@ronaldo.com,79ab7cb2858b28b0be36da96cb2e643a,SPORTSMAN

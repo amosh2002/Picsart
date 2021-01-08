@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class FootballerService {
@@ -87,7 +88,7 @@ public class FootballerService {
             System.out.print("Preferred Foot: ");
             String hh = sc.nextLine();
             try {
-                char foot = hh.charAt(0);
+                char foot = hh.toLowerCase().charAt(0);
                 ftbYet.setPreferredFoot(foot);
             } catch (Exception e) {
                 System.out.println(e.toString());

@@ -1,3 +1,5 @@
 W W,160.0,60.0,8,8,weightLifter,78b9a5d98b0642eba080d2c1ebf072cd
 S S,178.0,89.0,8,8,sprinter,f0f13786638803b2553d8a64b7e5ddf2
 Saqo Sargsyan,178.0,78.0,8,6,sprinter,7485505ba29ecf9e5d7e36184a35a89d
+Leo Messi,167.0,67.0,l,CF,7,9,9,10,2,4,6,footballer,9b9687218b59e396221eae07cc1a85bd
+Cristiano Ronaldo,187.0,86.0,r,ST,8,9,7,7,3,8,9,footballer,faa4036b02b6347cacdcfbe6a6db9160

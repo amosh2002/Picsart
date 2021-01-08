@@ -1,0 +1,2 @@
+Leo Messi,167.0,67.0,l,CF,7,9,9,10,2,4,6,9b9687218b59e396221eae07cc1a85bd
+Cristiano Ronaldo,187.0,86.0,r,ST,8,9,7,7,3,8,9,faa4036b02b6347cacdcfbe6a6db9160

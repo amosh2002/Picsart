@@ -1,6 +1,6 @@
 package model;
 
-public class Footballer extends Sportsman implements SpeedRunner {
+public class Footballer extends Sportsman {
     protected char preferredFoot;
     protected String position;
     protected int pace;
@@ -10,6 +10,20 @@ public class Footballer extends Sportsman implements SpeedRunner {
     protected int defending;
     protected int physical;
     protected int heading;
+
+    @Override
+    public void print() {
+        super.print();
+        System.out.println("Preferred foot: " + (preferredFoot == 'l' ? "Left" : "Right"));
+        System.out.println("Position: " + position);
+        System.out.println("Pace: " + pace);
+        System.out.println("Shooting: " + shooting);
+        System.out.println("Passing: " + passing);
+        System.out.println("Dribbling: " + dribbling);
+        System.out.println("Defending: " + defending);
+        System.out.println("Physical: " + physical);
+        System.out.println("Heading: " + heading);
+    }
 
 
     public Footballer() {
@@ -146,11 +160,5 @@ public class Footballer extends Sportsman implements SpeedRunner {
             throw new InvalidCredentialsException("Heading should be above 1 and below 10, Your input: '" + heading + "'");
         }
         this.heading = heading;
-    }
-
-    @Override
-    public void boostSpeed(int speedToBoost) {
-        this.pace += speedToBoost;
-        this.physical += speedToBoost / 2;
     }
 }

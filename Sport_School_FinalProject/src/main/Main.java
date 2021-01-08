@@ -174,7 +174,7 @@ public class Main {
         switch (input) {
             case 1:
                 if (sp != null) {
-                    SportsmenService.printInfo(sp);
+                    sp.print();
                 }
                 break;
             case 2:
